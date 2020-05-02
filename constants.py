@@ -1,0 +1,15 @@
+import math
+
+# Project constants
+CANVAS_H = 900
+CANVAS_W  = int(CANVAS_H*16/9)
+
+VISION_RAD = 75
+VISION_RADSQR = VISION_RAD**2
+GRID_W = math.ceil(CANVAS_W / VISION_RAD)
+GRID_H = math.ceil(CANVAS_H / VISION_RAD)
+
+ITER_SEC = 40
+EPSILON = 0.0001
+
+DEBUG_LOG = True
