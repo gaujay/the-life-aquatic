@@ -4,7 +4,7 @@ Python study project: ecosystem simulation with flocking behavior.
 
 Powered by Tkinter and NumPy modules
 
-![Screenshot_00](docs/screenshot_0.png)
+![Screenshot_00](docs/capture_0.gif)
 
 ### Features
 
