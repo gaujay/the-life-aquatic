@@ -9,10 +9,15 @@ from flora import Flora
 from boid import Boid
 from predator import Predator
 
+def getNumberInput(message):
+    num = int(input(message))
+    return num
+
 # Constants
-INI_PREDS = 4
-INI_BOIDS = 25
-INI_FLORA = 45
+#INI_PREDS = 4
+INI_PREDS = getNumberInput("Enter the number of predators (1 - 100): ")
+INI_BOIDS = getNumberInput("Enter the number of boids (1 - 25): ")
+INI_FLORA = getNumberInput("Enter the number of flora (1 - 45): ")
 
 BKGD_CLR = '#030A21'
 

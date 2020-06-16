@@ -46,37 +46,8 @@ class Boid:
         grid.append( [] )
         for j in range(GRID_H):
             grid[i].append( [] )
+   
     
-    #
-    @staticmethod
-    def setPredatorGrid(predGrid):
-        Boid.predatorGrid = predGrid
-    
-    #
-    def removeFromGrid(self):
-        Boid.grid[int(self.pos[0] // VISION_RAD)][int(self.pos[1] // VISION_RAD)].remove(self)
-    
-    #
-    def updateGrid(self, remove=True):
-        if remove:
-            # Only if cell changed
-            if (  int(self.pos[0] // VISION_RAD) == int(self.nxt[0] // VISION_RAD)
-              and int(self.pos[1] // VISION_RAD) == int(self.nxt[1] // VISION_RAD) ):
-                return
-            Boid.grid[int(self.pos[0] // VISION_RAD)][int(self.pos[1] // VISION_RAD)].remove(self)
-        # Add
-        Boid.grid[int(self.nxt[0] // VISION_RAD)][int(self.nxt[1] // VISION_RAD)].append(self)
-    
-    #
-    def getNearCells(self):
-        return vu.getNearCellsFromPos(self.pos, VISION_RAD, GRID_W-1, GRID_H-1)
-    
-    #
-    def distanceSqr(self, other):
-        return vu.distanceSqrWrapped(self.pos, other.pos)
-    
-    #
-    #
     def __init__(self, canvas, pos=None, isNewborn=False):
         if pos is not None:
             self.pos = pos
@@ -112,7 +83,35 @@ class Boid:
         
         Boid.all.append(self)
     
-
+ 
+    #
+    @staticmethod
+    def setPredatorGrid(predGrid):
+        Boid.predatorGrid = predGrid
+    
+    #
+    def removeFromGrid(self):
+        Boid.grid[int(self.pos[0] // VISION_RAD)][int(self.pos[1] // VISION_RAD)].remove(self)
+    
+    #
+    def updateGrid(self, remove=True):
+        if remove:
+            # Only if cell changed
+            if (  int(self.pos[0] // VISION_RAD) == int(self.nxt[0] // VISION_RAD)
+              and int(self.pos[1] // VISION_RAD) == int(self.nxt[1] // VISION_RAD) ):
+                return
+            Boid.grid[int(self.pos[0] // VISION_RAD)][int(self.pos[1] // VISION_RAD)].remove(self)
+        # Add
+        Boid.grid[int(self.nxt[0] // VISION_RAD)][int(self.nxt[1] // VISION_RAD)].append(self)
+    
+    #
+    def getNearCells(self):
+        return vu.getNearCellsFromPos(self.pos, VISION_RAD, GRID_W-1, GRID_H-1)
+    
+    #
+    def distanceSqr(self, other):
+        return vu.distanceSqrWrapped(self.pos, other.pos)
+    
     #
     def align(self):
         steer = np.array([0., 0.])
